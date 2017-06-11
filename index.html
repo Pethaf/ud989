@@ -33,13 +33,20 @@ function Cat(name, imageURL){
   {
     var name = this.textContent;
     cats.forEach(function(cat){
+      document.getElementsByTagName("figure")[0].appendChild(document.createElement("figcaption").textContent = name);
       if(cat.getName() === name)
       {
           currentCat = cat;
           document.getElementsByTagName("figure")[0].
-          getElementsByTagName("img").src=cat.getImage();
+          getElementsByTagName("img")[0].src=cat.getImage();
+          document.getElementById("counter").textContent = currentCat.getCounter();
       }
     });
+  }
+  function updateCounter()
+  {
+    currentCat.increment();
+    document.getElementById("counter").textContent = currentCat.getCounter();
   }
     var catNames =
     [
@@ -63,6 +70,7 @@ function Cat(name, imageURL){
       {
         list[j].addEventListener("click",changeCat);
       }
+      document.getElementsByTagName("img")[0].addEventListener("click",updateCounter);
     })});
 </script>
 </html>
