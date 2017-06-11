@@ -1,0 +1,7 @@
+MVO = design pattern
+
+M = model (underlying data)
+V = view (what the user sees)
+O = octopus (links model and view)
+
+O = {Controller/Presentation Controller/*/Whatever};
