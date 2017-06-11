@@ -8,38 +8,56 @@
 </head>
 <h1>The Cat Clicker</h1>
 <div class="container">
-<figure id="cat1">
-<img src="http://placekitten.com.s3.amazonaws.com/homepage-samples/408/287.jpg">
-<div> <p>You clicked:</p> <p id="count1">0</p> <p> times</p></div>
-<figcaption>Cat1</figcaption>
+<ul>
+</ul>
+<figure>
+  <img src="http://placekitten.com.s3.amazonaws.com/homepage-samples/200/138.jpg">
 </figure>
-<figure id="cat2">
-  <img src="http://placekitten.com.s3.amazonaws.com/homepage-samples/96/139.jpg">
-  <div> <p>You clicked:</p> <p id="count2">0</p> <p> times</p></div>
-  <figcaption>Cat2</figcaption>
-</figure>
+<div id="counter">
 </div>
+</html>
 <script>
-function increment(counter){
-  counter.textContent = parseInt(counter.textContent)+1;
-}
-function handleClick()
+function Cat(name, imageURL){
+    this.name = name;
+    this. imageURL = imageURL;
+    this.counter = 0;
+  };
+
+  Cat.prototype.getName = function() { return this.name;}
+  Cat.prototype.getCounter = function() { return this.counter;}
+  Cat.prototype.increment = function() { this.counter+=1;}
+
+  function changeCat()
+  {
+    console.log(this.textContent);
+  }
+    var catNames =
+    [
+      ["Sebastian","http://placekitten.com.s3.amazonaws.com/homepage-samples/408/287.jpg"],
+      ["Claude","http://placekitten.com.s3.amazonaws.com/homepage-samples/200/287.jpg"],
+      ["Bumbalerina","http://placekitten.com.s3.amazonaws.com/homepage-samples/200/139.jpg"],
+      ["Electra","http://placekitten.com.s3.amazonaws.com/homepage-samples/200/138.jpg"],
+      ["Demeter","http://placekitten.com.s3.amazonaws.com/homepage-samples/96/139.jpg"]
+    ];
+    var cats = [];
+    catNames.forEach(function(cat){
+      cats.push(new Cat(cat[0],cat[1]));
+    })
+    window.addEventListener("DOMContentLoaded",function(){
+    cats.forEach(function(cat){
+      console.log(cat.getName());
+      var listNode = document.createElement("li");
+      listNode.textContent = cat.getName();
+      document.getElementsByTagName("ul")[0].appendChild(listNode);
+      var list = document.getElementsByTagName("li");
+      for(var j=0; j!= list.length; j++)
+      {
+        list[j].addEventListener("click",changeCat);
+      }
+    })});
+function updateCat()
 {
-  var parentID = this.parentNode.id;
-  var counter = "count"+parentID.match(/\d/)[0];
-  increment(document.getElementById(counter));
+
 }
-window.addEventListener("DOMContentLoaded",function(){
-var names=["Spot","Bruno"];
-for(var j=0;j!=names.length;j++)
-{
-  var cat = document.getElementById("cat"+(j+1));
-  cat.getElementsByTagName("figcaption")[0].textContent = names[j];
-}
-var imgs = document.getElementsByTagName("img");
-for(var j=0; j!= imgs.length; j++)
-{
-  imgs[j].addEventListener("click",handleClick);
-}});
 </script>
 </html>
