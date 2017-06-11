@@ -32,10 +32,15 @@ function Cat(name, imageURL){
   function changeCat()
   {
     var name = this.textContent;
-    cats.forEach(function(cat){
-      document.getElementsByTagName("figure")[0].appendChild(document.createElement("figcaption").textContent = name);
+    cats.forEach(function(cat)
+    {
       if(cat.getName() === name)
       {
+          var tmp = document.getElementsByTagName("figure")[0];
+          tmp.removeChild(tmp.lastChild);
+          var kittyName = document.createElement("figcaption");
+          kittyName.textContent = cat.getName();
+          document.getElementsByTagName("figure")[0].appendChild(kittyName);
           currentCat = cat;
           document.getElementsByTagName("figure")[0].
           getElementsByTagName("img")[0].src=cat.getImage();
