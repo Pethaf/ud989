@@ -17,9 +17,7 @@ function increment(){
   counter.textContent = parseInt(counter.textContent)+1;
 }
 window.addEventListener("DOMContentLoaded",function(){
-
-
-
+document.getElementsByTagName("img")[0].addEventListener('click',increment);
 });
 </script>
 </html>
