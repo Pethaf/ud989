@@ -8,16 +8,38 @@
 </head>
 <h1>The Cat Clicker</h1>
 <div class="container">
+<figure id="cat1">
 <img src="http://placekitten.com.s3.amazonaws.com/homepage-samples/408/287.jpg">
-<div> <p>You clicked:</p> <p id="count">0</p> <p> times</p></div>
+<div> <p>You clicked:</p> <p id="count1">0</p> <p> times</p></div>
+<figcaption>Cat1</figcaption>
+</figure>
+<figure id="cat2">
+  <img src="http://placekitten.com.s3.amazonaws.com/homepage-samples/96/139.jpg">
+  <div> <p>You clicked:</p> <p id="count2">0</p> <p> times</p></div>
+  <figcaption>Cat2</figcaption>
+</figure>
 </div>
 <script>
-function increment(){
-  var counter = document.getElementById('count');
+function increment(counter){
   counter.textContent = parseInt(counter.textContent)+1;
 }
+function handleClick()
+{
+  var parentID = this.parentNode.id;
+  var counter = "count"+parentID.match(/\d/)[0];
+  increment(document.getElementById(counter));
+}
 window.addEventListener("DOMContentLoaded",function(){
-document.getElementsByTagName("img")[0].addEventListener('click',increment);
-});
+var names=["Spot","Bruno"];
+for(var j=0;j!=names.length;j++)
+{
+  var cat = document.getElementById("cat"+(j+1));
+  cat.getElementsByTagName("figcaption")[0].textContent = names[j];
+}
+var imgs = document.getElementsByTagName("img");
+for(var j=0; j!= imgs.length; j++)
+{
+  imgs[j].addEventListener("click",handleClick);
+}});
 </script>
 </html>

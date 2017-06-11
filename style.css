@@ -8,13 +8,21 @@ h1
   text-align: center;
 }
 
-img
-{
-  margin-right: 10vw;
-  width: 50vw;
-  margin-left: 25vw;
-}
 .container
 {
   display:flex;
+  justify-content: center;
+}
+figure {
+  display: table;
+}
+figcaption
+{
+  text-align: center;
+  display: table-caption;
+  caption-side: top;
+}
+#count
+{
+
 }
