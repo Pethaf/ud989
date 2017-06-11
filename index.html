@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <title>Cat clicker</title
+</head>
+<h1>The Cat Clicker</h1>
+<div class="container">
+<img src="http://placekitten.com.s3.amazonaws.com/homepage-samples/408/287.jpg">
+<div> <p>You clicked:</p> <p id="count">0</p> <p> times</p></div>
+</div>
+<script>
+function increment(){
+  var counter = document.getElementById('count');
+  counter.textContent = parseInt(counter.textContent)+1;
+}
+window.addEventListener("DOMContentLoaded",function(){
+
+
+
+});
+</script>
+</html>
