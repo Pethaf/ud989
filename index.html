@@ -17,21 +17,28 @@
 </div>
 </html>
 <script>
+var currentCat;
 function Cat(name, imageURL){
     this.name = name;
-    this. imageURL = imageURL;
+    this.imageURL = imageURL;
     this.counter = 0;
   };
 
   Cat.prototype.getName = function() { return this.name;}
   Cat.prototype.getCounter = function() { return this.counter;}
   Cat.prototype.increment = function() { this.counter+=1;}
+  Cat.prototype.getImage = function() { return this.imageURL;}
 
   function changeCat()
   {
-    console.log(this.textContent);
+    var name = this.textContent;
     cats.forEach(function(cat){
-      console.log(cat);
+      if(cat.getName() === name)
+      {
+          currentCat = cat;
+          document.getElementsByTagName("figure")[0].
+          getElementsByTagName("img").src=cat.getImage();
+      }
     });
   }
     var catNames =
