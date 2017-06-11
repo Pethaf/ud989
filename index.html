@@ -30,6 +30,9 @@ function Cat(name, imageURL){
   function changeCat()
   {
     console.log(this.textContent);
+    cats.forEach(function(cat){
+      console.log(cat);
+    });
   }
     var catNames =
     [
@@ -45,7 +48,6 @@ function Cat(name, imageURL){
     })
     window.addEventListener("DOMContentLoaded",function(){
     cats.forEach(function(cat){
-      console.log(cat.getName());
       var listNode = document.createElement("li");
       listNode.textContent = cat.getName();
       document.getElementsByTagName("ul")[0].appendChild(listNode);
@@ -55,9 +57,5 @@ function Cat(name, imageURL){
         list[j].addEventListener("click",changeCat);
       }
     })});
-function updateCat()
-{
-
-}
 </script>
 </html>
