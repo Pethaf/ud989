@@ -1,0 +1,68 @@
+h1
+{
+	text-shadow: 10px 10px 10px;
+	text-align: center;
+}
+
+#container
+{
+	display:flex;
+}
+
+#catpicture, #catdisplay
+
+{
+	border: 1px solid black;
+}
+
+#catlist
+{
+	margin: 10px;
+	padding: 5px;
+	display: flex;
+	list-style: none;
+	flex-direction: column;
+
+}
+
+#catlist li
+{
+	text-transform: uppercase;
+	padding: 5px;
+	margin: 5px;
+	border: 1px solid black;
+	text-align: center;
+}
+
+#catlist li:hover
+{
+	transform:scale(1.5);
+}
+
+#catpicture
+{
+	border: 1px solid black;
+	max-width: 10vw;
+	max-height: 10vh;
+	order: 2;
+}
+#catpicture:hover
+{
+	transform: scale(1.5);
+}
+
+#catdisplay
+{
+	justify-content: center;
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+	width: 80vw;
+}
+
+#counter
+{
+	order: 3;
+}
+
+
