@@ -91,6 +91,7 @@ var adminFormView =
 		this.catNameForm.value ="";
 		this.catImageForm.value = "";
 		this.catCounterForm.value="";
+		this.hidden = true;
 		this.render();
 	}
 }
