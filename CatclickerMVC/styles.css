@@ -65,4 +65,27 @@ h1
 	order: 3;
 }
 
+#admin
+{
+	display: flex;
+	border: 1px solid black;
+	justify-content: center;
+}
 
+#adminbutton
+{
+	margin-right: 10px;
+}
+
+#catform
+{
+	display:flex;
+	flex-direction: column;
+}
+
+#controls
+{
+	display:flex;
+	border:1px solid red;
+	justify-content: center;
+}

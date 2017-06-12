@@ -38,6 +38,63 @@ var catlistView =
 	}
 }
 
+var adminFormView = 
+{
+	init: function() 
+	{
+		this.adminButton = document.getElementById("adminbutton");
+		this.adminForm = document.getElementById("catform");
+		this.catNameForm = document.getElementById("kittyname");
+		this.catImageForm = document.getElementById("kittypicture");
+		this.catCounterForm = document.getElementById("kittycounter");
+		this.hidden = true;
+		adminbutton.addEventListener("click",function(){
+			console.log("admin button");
+			adminFormView.hidden = !adminFormView.hidden;
+			adminFormView.render();
+		})
+			document.getElementById("save").addEventListener("click",function(e){
+			e.preventDefault();
+			adminFormView.saveCat();
+		});
+			document.getElementById("cancel").addEventListener("click", function(e){
+				e.preventDefault();
+				adminFormView.cancel();
+			});
+		this.render();
+	
+			
+	},
+	render: function()
+	{
+		if(this.hidden)
+		{
+			this.adminForm.style.display = "none";
+		}
+		else
+		{
+			this.adminForm.style.display = "flex";
+			var cat = octopus.getCurrentCat();
+			this.catNameForm.placeholder = cat.name;
+			this.catImageForm.placeholder = cat.imageURL;
+			this.catCounterForm.placeholder = cat.counter;
+		}
+	},
+	saveCat: function()
+	{
+		octopus.saveCat((this.catNameForm.value || this.catNameForm.placeholder),
+			            (this.catImageForm.value || this.catImageForm.placeholder),
+			            (this.catCounterForm.value || this.catCounterForm.placeholder));
+	},
+	cancel: function()
+	{
+		this.catNameForm.value ="";
+		this.catImageForm.value = "";
+		this.catCounterForm.value="";
+		this.render();
+	}
+}
+
 var octopus = 
 {
 	init: function()
@@ -45,6 +102,7 @@ var octopus =
 		model.init();
 		catlistView.init();
 		catPictureView.init();
+		adminFormView.init();
 	},
 
 	getCurrentCat: function()
@@ -55,15 +113,24 @@ var octopus =
 	{
 		model.updateCounter();
 		catPictureView.render();
+		adminFormView.render();
 	},
 	updateCurrentCat: function()
 	{
 		model.updateCurrentCat(event);
 		catPictureView.render();
+		adminFormView.render();
 	},
 	getAllCats: function()
 	{
 		return model.getAllCats();
+	},
+
+	saveCat: function(name, imageURL, counter)
+	{
+		model.saveCat(name,imageURL,counter);
+		catPictureView.render();
+		adminFormView.render();
 	}
 }
 
@@ -114,6 +181,12 @@ var model =
 				}
 			})
 		}
+	},
+	saveCat: function(name, imageURL, counter)
+	{
+		model.currentCat.name = name;
+		model.currentCat.imageURL = imageURL;
+		model.currentCat.counter = counter;
 	}
 	}	
 	octopus.init();
