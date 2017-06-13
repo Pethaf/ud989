@@ -5,3 +5,13 @@ V = view (what the user sees)
 O = octopus (links model and view)
 
 O = {Controller/Presentation Controller/*/Whatever};
+
+Model only ever talks to octopus, View only ever talks to octopus
+
+
+Refactoring = changing code without changing functionality.
+E.g. breaking large/complex functions into smaller parts.
+Without breaking external interface.
+
+Sometimes code that can't be refactored has to be reimplemented
+(while maintaining external interface).
